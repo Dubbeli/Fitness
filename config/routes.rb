@@ -1,4 +1,18 @@
 Fitness::Application.routes.draw do
+  get "uitloggen" => "sessions#destroy", :as => "logout"
+  get "inloggen" => "sessions#new", :as => "login"
+  get "aanmelden" => "users#new", :as => "signup"
+
+  resources :sessions
+
+  resources :categories
+  resources :users do
+    member do
+      get :activate
+    end
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
